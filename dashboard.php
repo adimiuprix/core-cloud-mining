@@ -9,27 +9,26 @@ $balance = getBalance($_SESSION);
 $arr_withdrawals = get_withdrawals();
 $total_withdrawal =  0;
 
-foreach ($arr_withdrawals as $key => $value)
-{
+foreach ($arr_withdrawals as $key => $value){
     $total_withdrawal +=  $value['amount'];
 }
 
 updateBalances($balance,$total_withdrawal);
 
-// GET the total Earning Balance
 $total_balance =  number_format(getUserBalance(),8,'.','');
 
-//List all Paid Plans
 $allplans = getPaidPlans();
 
 //Active Plan
-$user = getUserAcPlans($_SESSION['uid']);
+$active_plans = getActiveUserPlans($_SESSION['uid']);
+var_dump($active_plans);
 
 //Calculate user earning rate
 $userEarningRate = 0;
-foreach($user as $key => $value){
+foreach($active_plans as $key => $value){
     $userEarningRate += $value->earning_rate;
 }
+
 ?>
 <div>
     <h4>Your balance</h4>
