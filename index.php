@@ -43,6 +43,8 @@ if (isset($_POST['username'])) {
     <button class="but-hover" id="go_enter" onclick="return validateFormLogin()">Start mining</button>
 </form>
 
+<p>Core Cloud Mining</p>
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script type="text/javascript">
     function validateFormLogin(){

@@ -145,10 +145,10 @@ function plansCron(array $data): void {
     }
 }
 //Get user active plans
-function getUserAcPlans($userId){
+function getUserAcPlans($user_id){
     global $conn;
     $stmt = $conn->prepare("SELECT * FROM user_plan_history uh INNER JOIN plans p ON p.id=uh.plan_id  WHERE user_id= :userId AND status='active'");
-    $stmt->bindParam('userId',$userId);
+    $stmt->bindParam('userId',$user_id);
     $stmt->execute();
     $stmt->setFetchMode(PDO::FETCH_OBJ);
     return $stmt->fetchAll();
@@ -182,6 +182,7 @@ function getUserBalance()
 	$bal = $stmt->fetchColumn();
 	return $bal;
 }
+
 function debitUserBalance($amount)
 {
     if(isset($amount)){
