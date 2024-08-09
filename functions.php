@@ -182,15 +182,3 @@ function getUserBalance()
 	$bal = $stmt->fetchColumn();
 	return $bal;
 }
-
-function debitUserBalance($amount)
-{
-    if(isset($amount)){
-        global $conn;
-        $stmt = $conn->prepare("UPDATE users SET balance = balance-:amount, cashouts = cashouts+:withdraw WHERE id = :id LIMIT 1");
-        $stmt->bindParam(':amount', $amount);
-        $stmt->bindParam(':withdraw', $amount);
-        $stmt->bindParam(':id', $_SESSION['uid']);
-        $stmt->execute();
-    }
-}
