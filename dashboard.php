@@ -18,8 +18,6 @@ updateBalances($balance,$total_withdrawal);
 $getUserBalance = getUserBalance();
 $total_balance =  number_format($getUserBalance ,8,'.','');
 
-$allplans = getPaidPlans();
-
 //Active Plan
 $active_plans = getActiveUserPlans($_SESSION['uid']);
 
