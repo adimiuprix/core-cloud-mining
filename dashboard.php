@@ -23,10 +23,9 @@ $active_plans = getActiveUserPlans($_SESSION['uid']);
 
 //Calculate user earning rate
 $userEarningRate = 0;
-foreach($active_plans as $key => $value){
-    $userEarningRate += $value->earning_rate;
+foreach($active_plans as $plan){
+    $userEarningRate += $plan->earning_rate;
 }
-
 ?>
 <div>
     <h4>Your balance</h4>
