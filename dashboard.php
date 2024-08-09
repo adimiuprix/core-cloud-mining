@@ -15,13 +15,13 @@ foreach ($arr_withdrawals as $key => $value){
 
 updateBalances($balance,$total_withdrawal);
 
-$total_balance =  number_format(getUserBalance(),8,'.','');
+$getUserBalance = getUserBalance();
+$total_balance =  number_format($getUserBalance ,8,'.','');
 
 $allplans = getPaidPlans();
 
 //Active Plan
 $active_plans = getActiveUserPlans($_SESSION['uid']);
-var_dump($active_plans);
 
 //Calculate user earning rate
 $userEarningRate = 0;
@@ -53,7 +53,7 @@ foreach($active_plans as $key => $value){
         </tr>
         <?php
             $sumCD = 0; $sumER = 0; $sumSP = 0;
-            foreach($user as $key => $plans):
+            foreach($active_plans as $key => $plans):
                 $sumER += $plans->earning_rate; $sumSP += $plans->speed; $sumCD += $plans->point_per_day;
                 $duration = $plans->duration;
                 if($duration == 0) {
